@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Image Slider</title>
+  <style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffc965;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.slider-container {
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.btn {
+  background: transparent;
+  color: #9c9a9a;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s;
+}
+
+  </style>
+</head>
+<body>
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <div class="slide">
+        <img src="assets/1.jpeg" alt="Image 1">
+      </div>
+      <div class="slide">
+        <img src="assets/2.jpeg" alt="Image 2">
+      </div>
+      <div class="slide">
+        <img src="assets/3.jpeg" alt="Image 3">
+      </div>
+    </div>
+    <div class="controls">
+      <button id="prev" class="btn"><img src="assets/prev.png" alt=""></button>
+      <button id="next" class="btn"><img src="assets/next.png" alt=""></button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

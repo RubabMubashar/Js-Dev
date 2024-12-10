@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f9f9f9, #e6e6e6);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .drag-container {
+    display: flex;
+    gap: 20px;
+    width: 80%;
+    max-width: 1000px;
+  }
+  
+  .drop-zone {
+    flex: 1;
+    min-height: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+  
+  .draggable {
+    width: 100px;
+    height: 100px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  }
+  
+  .draggable:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .box1 { background: linear-gradient(135deg, #ff7eb3, #ff758c); }
+  .box2 { background: linear-gradient(135deg, #57c8ff, #7b93ff); }
+  .box3 { background: linear-gradient(135deg, #84e57c, #57c78a); }
+  .box4 { background: linear-gradient(135deg, #fdb94e, #fc7c4c); }
+  .box5 { background: linear-gradient(135deg, #a275ff, #7d60ff); }
+  .box6 { background: linear-gradient(135deg, #ffea61, #fdbf50); }
+  

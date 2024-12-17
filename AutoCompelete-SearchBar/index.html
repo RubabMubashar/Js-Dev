@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Search Bar with Autocomplete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #3e92ff;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 93%;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #007bff;
+        }
+
+        .suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .suggestion {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .suggestion:hover {
+            background-color: #f0f0f0;
+        }
+
+        .no-suggestions {
+            padding: 10px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search" class="search-input" placeholder="Search..." autocomplete="off">
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

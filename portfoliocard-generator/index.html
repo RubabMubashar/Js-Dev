@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card Generator</title>
+    <style>
+           * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background:#7c03a1;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #7c03a1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #47015c;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Profile Card Generator</div>
+        <form id="profileForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="bio">Bio</label>
+            <input type="text" id="bio" placeholder="Enter a short bio" required>
+
+            <label for="image">Profile Image</label>
+            <input type="file" id="image" accept="image/*" required>
+
+            <button type="submit">Generate Profile Card</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('profileForm');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get input values
+            const name = document.getElementById('name').value;
+            const bio = document.getElementById('bio').value;
+            const imageInput = document.getElementById('image');
+
+            // Check if an image is uploaded
+            if (imageInput.files.length === 0) {
+                alert('Please upload an image.');
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const imageUrl = event.target.result;
+
+                // Save data to localStorage
+                localStorage.setItem('profileName', name);
+                localStorage.setItem('profileBio', bio);
+                localStorage.setItem('profileImage', imageUrl);
+
+                // Redirect to profile card page
+                window.location.href = 'profile-card.html';
+            };
+
+            reader.readAsDataURL(imageInput.files[0]);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #7c03a1;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 60%;
+            max-width: 230px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .profile-card h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .profile-card p {
+            margin: 0 0 15px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-card" id="profileCard">
+        <!-- Profile card content will be injected here -->
+    </div>
+
+    <script>
+        // Retrieve data from localStorage
+        const name = localStorage.getItem('profileName');
+        const bio = localStorage.getItem('profileBio');
+        const imageUrl = localStorage.getItem('profileImage');
+
+        // Check if data exists
+        if (name && bio && imageUrl) {
+            const profileCard = document.getElementById('profileCard');
+            profileCard.innerHTML = `
+                <img src="${imageUrl}" alt="${name}'s Profile Picture">
+                <h3>${name}</h3>
+                <p>${bio}</p>
+            `;
+        } else {
+            // Redirect to the main page if no data found
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>

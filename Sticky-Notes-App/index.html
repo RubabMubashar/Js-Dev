@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticky Notes App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f8fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      color: #333;
+    }
+
+    .note-input {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .note-input textarea {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      resize: none;
+      font-size: 16px;
+    }
+
+    .note-input button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      border: none;
+      background: #5c67f2;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .note-input button:hover {
+      background: #4a54d4;
+    }
+
+    .notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .note {
+      background: #fff;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex: 1 1 calc(50% - 10px);
+      min-width: 150px;
+      max-width: 200px;
+      position: relative;
+    }
+
+    .note .actions {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .note button {
+      background: #ff5252;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .note button.edit-btn {
+      background: #5c67f2;
+    }
+
+    .note button.edit-btn:hover {
+      background: #4a54d4;
+    }
+
+    .note button.delete-btn:hover {
+      background: #e04343;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Sticky Notes App</h1>
+    </div>
+
+    <div class="note-input">
+      <textarea id="noteText" rows="2" placeholder="Write a note..."></textarea>
+      <button id="addNote">Add Note</button>
+    </div>
+
+    <div class="notes" id="notesContainer"></div>
+  </div>
+
+  <script>
+    const noteText = document.getElementById('noteText');
+    const addNote = document.getElementById('addNote');
+    const notesContainer = document.getElementById('notesContainer');
+
+    // Load notes from localStorage
+    const loadNotes = () => {
+      const notes = JSON.parse(localStorage.getItem('notes')) || [];
+      notes.forEach(note => {
+        createNoteElement(note);
+      });
+    };
+
+    // Save notes to localStorage
+    const saveNotes = () => {
+      const notes = Array.from(document.querySelectorAll('.note p')).map(note => note.textContent);
+      localStorage.setItem('notes', JSON.stringify(notes));
+    };
+
+    // Create note element
+    const createNoteElement = (content) => {
+      const note = document.createElement('div');
+      note.className = 'note';
+      note.innerHTML = `
+        <p>${content}</p>
+        <div class="actions">
+          <button class="edit-btn">&#9998;</button>
+          <button class="delete-btn">&times;</button>
+        </div>
+      `;
+
+      // Add edit functionality
+      note.querySelector('.edit-btn').addEventListener('click', () => {
+        const newContent = prompt('Edit your note:', note.querySelector('p').textContent);
+        if (newContent !== null) {
+          note.querySelector('p').textContent = newContent.trim();
+          saveNotes();
+        }
+      });
+
+      // Add delete functionality
+      note.querySelector('.delete-btn').addEventListener('click', () => {
+        note.remove();
+        saveNotes();
+      });
+
+      notesContainer.appendChild(note);
+    };
+
+    // Add note event
+    addNote.addEventListener('click', () => {
+      const content = noteText.value.trim();
+      if (content) {
+        createNoteElement(content);
+        saveNotes();
+        noteText.value = '';
+      }
+    });
+
+    // Initial load
+    loadNotes();
+  </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #f8f4fc;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Header Section */
+.resume-header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #ccc;
+}
+
+.profile {
+    margin-bottom: 15px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #a64ac9;
+    object-fit: cover;
+}
+
+.resume-header h1 {
+    font-size: 2.5rem;
+    color: #a64ac9;
+}
+
+.resume-header p {
+    font-size: 1.2rem;
+    color: #777;
+}
+
+.resume-header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.resume-header nav ul li {
+    margin: 0 15px;
+}
+
+.resume-header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.resume-header nav ul li a:hover {
+    color: #a64ac9;
+}
+
+/* Sections */
+.section {
+    margin: 40px 0;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    color: #a64ac9;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.section p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.skill-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+    background: #a64ac9;
+    color: #fff;
+}
+
+/* Timeline */
+.timeline {
+    margin-top: 20px;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+}
+
+.timeline-item h3 {
+    font-size: 1.4rem;
+    color: #a64ac9;
+}
+
+.timeline-item p {
+    color: #555;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Languages Section */
+.languages-list {
+    list-style: none;
+    text-align: center;
+}
+
+.languages-list li {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+/* Contact Section */
+.section#contact {
+    text-align: center;
+}
+
+.section#contact p {
+    margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .resume-header nav ul {
+        flex-direction: column;
+    }
+
+    .resume-header nav ul li {
+        margin: 10px 0;
+    }
+}
